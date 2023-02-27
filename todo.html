@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .none {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <input type="text" id="task" />
+      <button onclick="addTask()">Submit</button>
+    </div>
+    <div id="result">
+      <div id="systum"></div>
+      <div id="history" class="none">
+        <h1>History</h1>
+      </div>
+    </div>
+    <button onclick="showHis()" id="his">History</button>
+    <script>
+      function addTask() {
+        let para = document.createElement("p");
+        para.innerText = document.getElementById("task").value;
+        document.getElementById("systum").prepend(para);
+
+        let vara = document.createElement("p");
+        vara.innerText = document.getElementById("task").value;
+        document.getElementById("history").append(vara);
+
+        document.getElementById("task").value = "";
+        para.style.cursor = "pointer";
+
+        para.addEventListener("click", () => {
+          para.style.textDecoration = "line-through";
+        });
+        para.addEventListener("dblclick", () => {
+          para.remove();
+          deleteTask.remove();
+        });
+      }
+      function showHis() {
+        document.getElementById("history").classList.toggle("none");
+      }
+    </script>
+  </body>
+</html>
